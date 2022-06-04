@@ -7,35 +7,19 @@
 
 import Foundation
 
-enum TravelControllerError: Error, LocalizedError {
-    case travelsNotFound
-
-    var errorDescription: String? {
-        switch self {
-            case .travelsNotFound:
-                return "На сервере нет данных"
-        }
-    }
+protocol TravelSource {
+    func fetchTravels() async throws -> [Travel]
 }
 
 final class TravelController {
-    private let baseURL = URL(string: "https://travel.wildberries.ru/")!
+    private let source: TravelSource
+    var travels: [Travel] = []
 
-    func fetchTravels() async throws -> [Travel] {
-        let travelURL = baseURL.appendingPathComponent("statistics/v1/cheap")
+    init(source: TravelSource = NetworkController()) {
+        self.source = source
+    }
 
-        let (data, response) = try await URLSession.shared.data(from: travelURL)
-
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw TravelControllerError.travelsNotFound
-        }
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-
-        let dataResponse = try decoder.decode(DataResponse.self, from: data)
-
-        return dataResponse.data
+    func fetchTravels() async throws {
+        travels = try await source.fetchTravels()
     }
 }

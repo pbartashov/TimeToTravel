@@ -16,5 +16,6 @@ struct Travel: Codable {
     var endDate: Date
     var price: Double
     var searchToken: String
+    var isFavorite = false
 }
 
