@@ -21,6 +21,9 @@
 		6E764CCC284ADDEF00E69CC7 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CCB284ADDEF00E69CC7 /* NetworkController.swift */; };
 		6E764CCE284B111D00E69CC7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */; };
 		6E764CD0284B193100E69CC7 /* StringInterpolation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */; };
+		6E764CD2284B39E800E69CC7 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD1284B39E800E69CC7 /* GradientView.swift */; };
+		6E764CD4284B431A00E69CC7 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */; };
+		A1E73DABAF4AFD80B34AEF54 /* Pods_TimeToTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,11 @@
 		6E764CCB284ADDEF00E69CC7 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringInterpolation+Extension.swift"; sourceTree = "<group>"; };
+		6E764CD1284B39E800E69CC7 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF230A959240A3D1ACCBCFA6 /* Pods-TimeToTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToTravel.release.xcconfig"; path = "Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel.release.xcconfig"; sourceTree = "<group>"; };
+		EEB3A0EDB452C1328396BF92 /* Pods-TimeToTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToTravel.debug.xcconfig"; path = "Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E73DABAF4AFD80B34AEF54 /* Pods_TimeToTravel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		415EF71A4D56DA31F5EAEC13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEB3A0EDB452C1328396BF92 /* Pods-TimeToTravel.debug.xcconfig */,
+				DF230A959240A3D1ACCBCFA6 /* Pods-TimeToTravel.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		67C8B40C33D435FCA8FBE921 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6E764C9B2848DB4B00E69CC7 = {
 			isa = PBXGroup;
 			children = (
 				6E764CA62848DB4B00E69CC7 /* TimeToTravel */,
 				6E764CA52848DB4B00E69CC7 /* Products */,
+				415EF71A4D56DA31F5EAEC13 /* Pods */,
+				67C8B40C33D435FCA8FBE921 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +147,8 @@
 				6E764CC5284AC9E200E69CC7 /* UIColor+Extension.swift */,
 				6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */,
 				6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */,
+				6E764CD1284B39E800E69CC7 /* GradientView.swift */,
+				6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -130,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E764CB82848DB4C00E69CC7 /* Build configuration list for PBXNativeTarget "TimeToTravel" */;
 			buildPhases = (
+				6B1772945E4EADFBE930F75A /* [CP] Check Pods Manifest.lock */,
 				6E764CA02848DB4B00E69CC7 /* Sources */,
 				6E764CA12848DB4B00E69CC7 /* Frameworks */,
 				6E764CA22848DB4B00E69CC7 /* Resources */,
+				5D0A755ECC66BFC47F16EC7A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,12 +220,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5D0A755ECC66BFC47F16EC7A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B1772945E4EADFBE930F75A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TimeToTravel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6E764CA02848DB4B00E69CC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6E764CCE284B111D00E69CC7 /* UIView+Extension.swift in Sources */,
+				6E764CD4284B431A00E69CC7 /* UIStackView+Extension.swift in Sources */,
 				6E764CCC284ADDEF00E69CC7 /* NetworkController.swift in Sources */,
 				6E764CC6284AC9E200E69CC7 /* UIColor+Extension.swift in Sources */,
 				6E764CAC2848DB4B00E69CC7 /* TravelsViewController.swift in Sources */,
@@ -203,6 +278,7 @@
 				6E764CA82848DB4B00E69CC7 /* AppDelegate.swift in Sources */,
 				6E764CC8284AD9B700E69CC7 /* TravelsViewCell.swift in Sources */,
 				6E764CD0284B193100E69CC7 /* StringInterpolation+Extension.swift in Sources */,
+				6E764CD2284B39E800E69CC7 /* GradientView.swift in Sources */,
 				6E764CBF2848DCC700E69CC7 /* DataResponse.swift in Sources */,
 				6E764CAA2848DB4B00E69CC7 /* SceneDelegate.swift in Sources */,
 			);
@@ -338,6 +414,7 @@
 		};
 		6E764CB92848DB4C00E69CC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEB3A0EDB452C1328396BF92 /* Pods-TimeToTravel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -366,6 +443,7 @@
 		};
 		6E764CBA2848DB4C00E69CC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF230A959240A3D1ACCBCFA6 /* Pods-TimeToTravel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

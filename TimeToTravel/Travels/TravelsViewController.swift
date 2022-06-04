@@ -31,7 +31,10 @@ final class TravelsViewController: UITableViewController {
 
 //        tableView.dataSource = self
 //        tableView.delegate = self
+//        tableView.contentInset = .init(top: 8, left: 8, bottom: 8, right: -28)
+        tableView.separatorStyle = .none
 
+        tableView.backgroundColor = .green
 
         spinner.startAnimating()
 
@@ -79,6 +82,8 @@ extension TravelsViewController {
 
         return cell
     }
+
+
 }
 
 //// MARK: - UITableViewDelegate methods
