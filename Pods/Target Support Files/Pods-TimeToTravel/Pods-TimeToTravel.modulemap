@@ -1,0 +1,6 @@
+framework module Pods_TimeToTravel {
+  umbrella header "Pods-TimeToTravel-umbrella.h"
+
+  export *
+  module * { export * }
+}
