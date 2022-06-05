@@ -19,14 +19,12 @@ final class TravelsViewCell: UITableViewCell {
     }(UILabel())
 
     private let startDate: UILabel = {
-//        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .wbPurplish
 
         return $0
     }(UILabel())
 
     private let endDate: UILabel = {
-//        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .wbPurplish
 
         return $0
@@ -42,18 +40,19 @@ final class TravelsViewCell: UITableViewCell {
     private let isFavorite: UIImageView = {
         $0.setContentHuggingPriority(.init(rawValue: 999), for: .horizontal)
         $0.tintColor = .wbDarkViolet
+
         return $0
     }(UIImageView())
 
     private let background: GradientView = {
-        $0.layer.cornerRadius = 8
+        $0.layer.cornerRadius = Constants.borderRadius
         $0.clipsToBounds = true
 
         return $0
     }(GradientView(colors: [.wbMagenta, .wbDarkViolet], startPoint: .init(x: 0, y: 0.5), endPoint: .init(x: 1, y: 0.5)))
 
     private let canva: UIView = {
-        $0.layer.cornerRadius = 3
+        $0.layer.cornerRadius = Constants.borderRadius - Constants.borderWidth
         $0.clipsToBounds = true
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         $0.backgroundColor = .white
@@ -72,17 +71,12 @@ final class TravelsViewCell: UITableViewCell {
     }
 
     private func initialize() {
-
         contentView.addSubview(background)
         background.addSubview(canva)
-
-
         setupLayouts()
-
     }
 
     private func setupLayouts() {
-
         background.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(8)
             make.trailing.bottom.equalToSuperview().offset(-8)
@@ -125,15 +119,15 @@ final class TravelsViewCell: UITableViewCell {
         dateStack.alignment = .leading
 
         dateStack.addArrangedSubviews(startDate,
-                                     endDate)
+                                      endDate)
 
         bottomStack.addArrangedSubviews(labelStack,
                                         dateStack,
                                         price,
                                         isFavorite)
 
-        background.addSubviews(topStack)
-        canva.addSubviews(bottomStack)
+        background.addSubview(topStack)
+        canva.addSubview(bottomStack)
 
         topStack.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -158,7 +152,6 @@ final class TravelsViewCell: UITableViewCell {
         startDate.text = "\(format: travel.startDate)"
         endDate.text = "\(format: travel.endDate)"
         price.text = "\(format: travel.price) руб"
-//        price.text = String(format: "%.2f", travel.price)
         isFavorite.image = travel.isFavoriteImage
     }
 }

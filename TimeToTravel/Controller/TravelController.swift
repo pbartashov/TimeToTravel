@@ -11,6 +11,7 @@ protocol TravelSource {
     func fetchTravels() async throws -> [Travel]
 }
 
+/// Manages travels array
 final class TravelController {
     private let source: TravelSource
     var travels: [Travel] = []

@@ -12,28 +12,14 @@ final class TravelsViewController: UITableViewController {
 
     private let travelController = TravelController()
 
-
-
-
-    /// Spinner shown during load the TableView
-    private let spinner: UIActivityIndicatorView = {
-        $0.style = .large
-        $0.color = .wbMagenta
-
-        return $0
-    }(UIActivityIndicatorView())
+    private var spinner: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialize()
-        setupNavigationBar()
-
-        spinner.startAnimating()
 
         fetchTravels()
-
-        addObservers()
     }
 
     deinit {
@@ -41,48 +27,13 @@ final class TravelsViewController: UITableViewController {
     }
 
     private func initialize() {
-
-        tableView.backgroundView = spinner
         tableView.register(TravelsViewCell.self,
                            forCellReuseIdentifier: TravelsViewCell.identifier)
-
-        //        tableView.dataSource = self
-        //        tableView.delegate = self
-        //        tableView.contentInset = .init(top: 8, left: 8, bottom: 8, right: -28)
         tableView.separatorStyle = .none
 
-
-//        tableView.backgroundView = GradientView(colors: [.wbMagenta, .wbPurplish],
-//                                                startPoint: .init(x: 0, y: 0.5),
-//                                                endPoint: .init(x: 1, y: 0.5))
-
-//        tableView.backgroundColor = .gradientColor(bounds: tableView.bounds, colors: [.wbMagenta, .wbPurplish])
-//        let background = GradientView(colors: [.wbMagenta, .wbPurplish],
-//                                      startPoint: .init(x: 0, y: 0.5),
-//                                      endPoint: .init(x: 1, y: 0.5))
-//        view.addSubview(background)
-//        view.bringSubviewToFront(<#T##view: UIView##UIView#>)(background)
-//
-//        tableView.backgroundColor = .green
-//        view.addSubview(spinner)
-//        setupLayouts()
-//        background.snp.makeConstraints { make in
-//            make.top.leading.trailing.bottom.equalToSuperview()
-//        }
-
+        setupNavigationBar()
+        addObservers()
     }
-
-//    private func setupLayouts() {
-//
-//        spinner.snp.makeConstraints { make in
-//            make.centerX.centerY.equalTo(view.safeAreaLayoutGuide)
-//
-//        }
-//    }
-
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        tableView.backgroundColor = .gradientColor(bounds: .init(origin: .zero, size: size), colors: [.wbMagenta, .wbPurplish])
-//    }
 
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -94,31 +45,23 @@ final class TravelsViewController: UITableViewController {
         scrollEdgeAppearance.configureWithTransparentBackground()
         scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-//        navBarAppearance.backgroundColor = <insert your color here>
-//        navigationController?.navigationBar.standardAppearance = navBarAppearance
-//        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-//        navigationController?.navigationBar.compactAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
 
         let standardAppearance = navigationController?.navigationBar.standardAppearance
         standardAppearance?.titleTextAttributes = [.foregroundColor: UIColor.wbMagenta]
         standardAppearance?.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
-
-
-//        navigationController?.navigationBar.scrollEdgeAppearance?.largeTitleTextAttributes = [.foregroundColor: UIColor.wbMagenta]
-//        navigationController?.navigationBar.scrollEdgeAppearance?.titleTextAttributes = [.foregroundColor: UIColor.wbMagenta]
-
         navigationController?.navigationBar.tintColor = .wbMagenta
-//        navigationController.colo
-//        navigationController?.navigationBar.backgroundColor = .myHabitsColor(.mainBackground)
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-
         super.viewWillTransition(to: size, with: coordinator)
 
-        // Для корректной установке NavigationBarAppearance при повороте устройства
+        // For correct applying of NavigationBarAppearance on device rotation
         coordinator.animate(alongsideTransition: { _ in
             self.navigationController?.navigationBar.sizeToFit()
         }, completion: nil)
@@ -131,34 +74,45 @@ final class TravelsViewController: UITableViewController {
                                       message: error.localizedDescription,
                                       preferredStyle: .alert)
 
-
         alert.addAction(UIAlertAction(title: "Повторить",
                                       style: .default,
                                       handler: { _ in self.fetchTravels() } ))
 
-//        alert.addAction(UIAlertAction(title: "Закрыть",
-//                                      style: .default, handler: nil))
-
         self.present(alert, animated: true, completion: nil)
-
-
-        // retry
     }
 
     private func fetchTravels() {
         Task.init {
             do {
+                showSpinner()
+
                 try await travelController.fetchTravels()
+
+                hideSpinner()
                 tableView.reloadData()
-                spinner.stopAnimating()
-                tableView.backgroundView = GradientView(colors: [.wbMagenta, .wbPurplish],
-                                                        startPoint: .init(x: 0, y: 0.5),
-                                                        endPoint: .init(x: 1, y: 0.5))
             } catch {
                 displayError(error, title: "Не удалось получить список авиаперелетов")
             }
-
         }
+    }
+
+    private func showSpinner() {
+        spinner = UIActivityIndicatorView()
+        spinner?.style = .large
+        spinner?.color = .wbMagenta
+
+        tableView.backgroundView = spinner
+
+        spinner?.startAnimating()
+    }
+
+    private func hideSpinner() {
+        spinner?.stopAnimating()
+        spinner = nil
+
+        tableView.backgroundView = GradientView(colors: [.wbMagenta, .wbPurplish],
+                                                startPoint: .init(x: 0, y: 0.5),
+                                                endPoint: .init(x: 1, y: 0.5))
     }
 }
 
@@ -190,6 +144,7 @@ extension TravelsViewController {
 
         let travel = travelController.travels[indexPath.row]
         let travelDetailedViewController = TravelDetailedViewController(travel: travel)
+
         navigationController?.pushViewController(travelDetailedViewController,
                                                  animated: true)
     }
@@ -216,15 +171,14 @@ extension TravelsViewController {
 
     @objc
     private func onUpdateTravel(_ notification: Notification) {
-
         if let userInfo = notification.userInfo,
            let travel = userInfo["travel"] as? Travel,
            let index = travelController.travels.firstIndex(where: { $0.searchToken == travel.searchToken }) {
 
-            let indexPath =  IndexPath(item: index, section: 0)
-
             DispatchQueue.main.async {
+                let indexPath =  IndexPath(item: index, section: 0)
                 let cell = self.tableView.cellForRow(at: indexPath) as! TravelsViewCell
+
                 cell.setup(with: travel)
             }
         }

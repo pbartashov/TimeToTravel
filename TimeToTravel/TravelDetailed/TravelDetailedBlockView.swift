@@ -12,14 +12,13 @@ class TravelDetailedBlockView: GradientView {
     private lazy var titleLabel: UILabel = {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .wbMagenta
-//        $0.textAlignment = .center
 
         return $0
     }(UILabel())
 
     private let textLabel: UILabel = {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .wbMagenta
+        $0.textColor = .wbPurplish
         $0.textAlignment = .right
 
         return $0
@@ -45,11 +44,12 @@ class TravelDetailedBlockView: GradientView {
 
     private let mainStack: UIStackView = {
         $0.spacing = Constants.spacing
+
         return $0
     }(UIStackView())
 
     private let canva: UIView = {
-        $0.layer.cornerRadius = Constants.cornerRadius - Constants.borderWidth
+        $0.layer.cornerRadius = Constants.borderRadius - Constants.borderWidth
         $0.clipsToBounds = true
         $0.backgroundColor = .white
 
@@ -62,19 +62,17 @@ class TravelDetailedBlockView: GradientView {
                    endPoint: .init(x: 1, y: 0.5))
 
         self.titleLabel.text = title
-
         initialize()
     }
 
     private func initialize() {
-        layer.cornerRadius = Constants.cornerRadius
+        layer.cornerRadius = Constants.borderRadius
         clipsToBounds = true
 
         addSubview(canva)
         canva.addSubview(mainStack)
         mainStack.addArrangedSubviews(self.titleLabel,
                                       self.textLabel)
-
         setupLayouts()
     }
 
@@ -88,12 +86,8 @@ class TravelDetailedBlockView: GradientView {
             make.top.leading.equalToSuperview().offset(Constants.spacing)
             make.trailing.bottom.equalToSuperview().offset(-Constants.spacing)
         }
-
-
-
-
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

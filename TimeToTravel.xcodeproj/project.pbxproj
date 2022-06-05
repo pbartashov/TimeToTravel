@@ -26,7 +26,8 @@
 		6E764CD9284CB0C300E69CC7 /* TravelDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD8284CB0C300E69CC7 /* TravelDetailedView.swift */; };
 		6EB900F9284CE606000594AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900F8284CE606000594AB /* Constants.swift */; };
 		6EB900FB284CEEB3000594AB /* TravelDetailedBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900FA284CEEB3000594AB /* TravelDetailedBlockView.swift */; };
-		6EB900FD284CFEAD000594AB /* NotoficationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900FC284CFEAD000594AB /* NotoficationName+Extension.swift */; };
+		6EB900FD284CFEAD000594AB /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900FC284CFEAD000594AB /* Notification+Extension.swift */; };
+		6EB90100284D75BD000594AB /* WBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900FF284D75BD000594AB /* WBNavigationController.swift */; };
 		A1E73DABAF4AFD80B34AEF54 /* Pods_TimeToTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +53,8 @@
 		6E764CD8284CB0C300E69CC7 /* TravelDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailedView.swift; sourceTree = "<group>"; };
 		6EB900F8284CE606000594AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6EB900FA284CEEB3000594AB /* TravelDetailedBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailedBlockView.swift; sourceTree = "<group>"; };
-		6EB900FC284CFEAD000594AB /* NotoficationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotoficationName+Extension.swift"; sourceTree = "<group>"; };
+		6EB900FC284CFEAD000594AB /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		6EB900FF284D75BD000594AB /* WBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNavigationController.swift; sourceTree = "<group>"; };
 		B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF230A959240A3D1ACCBCFA6 /* Pods-TimeToTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToTravel.release.xcconfig"; path = "Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel.release.xcconfig"; sourceTree = "<group>"; };
 		EEB3A0EDB452C1328396BF92 /* Pods-TimeToTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToTravel.debug.xcconfig"; path = "Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,8 +127,8 @@
 		6E764CBB2848DB6E00E69CC7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6E764CBC2848DB7F00E69CC7 /* Travel.swift */,
 				6E764CBE2848DCC700E69CC7 /* DataResponse.swift */,
+				6E764CBC2848DB7F00E69CC7 /* Travel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,8 +136,8 @@
 		6E764CC02848DD4E00E69CC7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6E764CC12848DD7100E69CC7 /* TravelController.swift */,
 				6E764CCB284ADDEF00E69CC7 /* NetworkController.swift */,
+				6E764CC12848DD7100E69CC7 /* TravelController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -153,8 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				6EB900FE284D0858000594AB /* Extensions */,
-				6E764CD1284B39E800E69CC7 /* GradientView.swift */,
 				6EB900F8284CE606000594AB /* Constants.swift */,
+				6E764CD1284B39E800E69CC7 /* GradientView.swift */,
+				6EB900FF284D75BD000594AB /* WBNavigationController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -172,11 +175,11 @@
 		6EB900FE284D0858000594AB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6E764CC5284AC9E200E69CC7 /* UIColor+Extension.swift */,
-				6EB900FC284CFEAD000594AB /* NotoficationName+Extension.swift */,
-				6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */,
+				6EB900FC284CFEAD000594AB /* Notification+Extension.swift */,
 				6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */,
+				6E764CC5284AC9E200E69CC7 /* UIColor+Extension.swift */,
 				6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */,
+				6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,7 +303,7 @@
 				6E764CCE284B111D00E69CC7 /* UIView+Extension.swift in Sources */,
 				6E764CD4284B431A00E69CC7 /* UIStackView+Extension.swift in Sources */,
 				6E764CCC284ADDEF00E69CC7 /* NetworkController.swift in Sources */,
-				6EB900FD284CFEAD000594AB /* NotoficationName+Extension.swift in Sources */,
+				6EB900FD284CFEAD000594AB /* Notification+Extension.swift in Sources */,
 				6E764CC6284AC9E200E69CC7 /* UIColor+Extension.swift in Sources */,
 				6EB900FB284CEEB3000594AB /* TravelDetailedBlockView.swift in Sources */,
 				6E764CAC2848DB4B00E69CC7 /* TravelsViewController.swift in Sources */,
@@ -312,6 +315,7 @@
 				6E764CD0284B193100E69CC7 /* StringInterpolation+Extension.swift in Sources */,
 				6E764CD2284B39E800E69CC7 /* GradientView.swift in Sources */,
 				6E764CBF2848DCC700E69CC7 /* DataResponse.swift in Sources */,
+				6EB90100284D75BD000594AB /* WBNavigationController.swift in Sources */,
 				6E764CAA2848DB4B00E69CC7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

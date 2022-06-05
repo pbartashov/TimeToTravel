@@ -1,5 +1,5 @@
 //
-//  NotoficationName+Extension.swift
+//  Notification+Extension.swift
 //  TimeToTravel
 //
 //  Created by Павел Барташов on 06.06.2022.

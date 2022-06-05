@@ -11,12 +11,4 @@ public extension UIView {
     static var identifier: String {
         String(describing: self)
     }
-
-//    func addSubviewsToAutoLayout(_ subviews: UIView...) {
-    func addSubviews(_ subviews: UIView...) {
-        subviews.forEach {
-            addSubview($0)
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
 }

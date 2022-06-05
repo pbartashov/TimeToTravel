@@ -7,11 +7,12 @@
 
 import UIKit
 
+/// Models travel
 final class Travel: Codable {
     var startCity: String
-//    var startCityCode: String
+    //    var startCityCode: String
     var endCity: String
-//    var endCityCode: String
+    //    var endCityCode: String
     var startDate: Date
     var endDate: Date
     var price: Double

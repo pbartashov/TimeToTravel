@@ -18,6 +18,7 @@ enum NetworkControllerError: Error, LocalizedError {
     }
 }
 
+/// Manages work with server
 struct NetworkController: TravelSource {
     private let baseURL = URL(string: "https://travel.wildberries.ru/")!
 

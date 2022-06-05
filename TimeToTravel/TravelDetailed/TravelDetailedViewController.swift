@@ -24,22 +24,11 @@ final class TravelDetailedViewController: UIViewController {
         super.viewDidLoad()
 
         initialize()
-
-
-        let addBarItem = UIBarButtonItem(image: travel.isFavoriteImage,
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(isFavoriteButtonTapped))
-
-        navigationItem.rightBarButtonItem = addBarItem
     }
     
     private func initialize() {
         navigationItem.largeTitleDisplayMode = .never
 
-//        view = GradientView(colors: [.wbMagenta, .wbPurplish],
-//                            startPoint: .init(x: 0, y: 0.5),
-//                            endPoint: .init(x: 1, y: 0.5))
         view.backgroundColor = .white
 
         let detailedView = TravelDetailedView()
@@ -50,6 +39,13 @@ final class TravelDetailedViewController: UIViewController {
         detailedView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+
+        let isFavoriteBarItem = UIBarButtonItem(image: travel.isFavoriteImage,
+                                                style: .plain,
+                                                target: self,
+                                                action: #selector(isFavoriteButtonTapped))
+
+        navigationItem.rightBarButtonItem = isFavoriteBarItem
     }
 
     @objc
@@ -61,5 +57,4 @@ final class TravelDetailedViewController: UIViewController {
                                         object: TravelDetailedViewController.self,
                                         userInfo: ["travel": travel])
     }
-
 }
