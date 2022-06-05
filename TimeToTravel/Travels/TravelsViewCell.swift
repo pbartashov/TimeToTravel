@@ -10,10 +10,6 @@ import SnapKit
 
 final class TravelsViewCell: UITableViewCell {
 
-    private enum Constants {
-
-    }
-
     private let cities: UILabel = {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .white
@@ -140,20 +136,20 @@ final class TravelsViewCell: UITableViewCell {
         canva.addSubviews(bottomStack)
 
         topStack.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(0)
-            make.leading.equalToSuperview().offset(5)
-            make.trailing.equalToSuperview().offset(-5)
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(2 * Constants.borderWidth)
+            make.trailing.equalToSuperview().offset(-2 * Constants.borderWidth)
         }
 
         canva.snp.makeConstraints { make in
-            make.top.equalTo(topStack.snp.bottom).offset(0)
-            make.leading.equalToSuperview().offset(5)
-            make.trailing.bottom.equalToSuperview().offset(-5)
+            make.top.equalTo(topStack.snp.bottom)
+            make.leading.equalToSuperview().offset(Constants.borderWidth)
+            make.trailing.bottom.equalToSuperview().offset(-Constants.borderWidth)
         }
 
         bottomStack.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(5)
-            make.trailing.bottom.equalToSuperview().offset(-5)
+            make.top.leading.equalToSuperview().offset(Constants.borderWidth)
+            make.trailing.bottom.equalToSuperview().offset(-Constants.borderWidth)
         }
     }
 
@@ -163,7 +159,7 @@ final class TravelsViewCell: UITableViewCell {
         endDate.text = "\(format: travel.endDate)"
         price.text = "\(format: travel.price) руб"
 //        price.text = String(format: "%.2f", travel.price)
-        isFavorite.image = UIImage(systemName: travel.isFavorite ? "heart.fill" : "heart")
+        isFavorite.image = travel.isFavoriteImage
     }
 }
 

@@ -29,6 +29,7 @@ final class TravelDetailedView: UIScrollView {
     private let mainStack: UIStackView = {
         $0.axis = .vertical
         $0.spacing = Constants.spacing
+        
         return $0
     }(UIStackView())
 
@@ -48,6 +49,10 @@ final class TravelDetailedView: UIScrollView {
 //        addSubview(background)
 //        background.addSubview(canva)
         backgroundColor = .white
+        contentInset = .init(top: Constants.spacing,
+                             left: Constants.spacing,
+                             bottom: Constants.spacing,
+                             right: Constants.spacing)
 
         addSubview(mainStack)
 
@@ -65,7 +70,7 @@ final class TravelDetailedView: UIScrollView {
 
         mainStack.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.width.equalToSuperview().offset(-Constants.spacing)
+            make.width.equalToSuperview().offset(-2 * Constants.spacing)
         }
     }
 

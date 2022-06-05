@@ -5,9 +5,9 @@
 //  Created by Павел Барташов on 02.06.2022.
 //
 
-import Foundation
+import UIKit
 
-struct Travel: Codable {
+final class Travel: Codable {
     var startCity: String
 //    var startCityCode: String
     var endCity: String
@@ -25,6 +25,12 @@ struct Travel: Codable {
         case endDate
         case price
         case searchToken
+    }
+}
+
+extension Travel {
+    var isFavoriteImage: UIImage? {
+        UIImage(systemName: isFavorite ? "heart.fill" : "heart")
     }
 }
 

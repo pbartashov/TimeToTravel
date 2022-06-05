@@ -10,7 +10,7 @@ import UIKit
 class TravelDetailedBlockView: GradientView {
 
     private lazy var titleLabel: UILabel = {
-//        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .wbMagenta
 //        $0.textAlignment = .center
 
@@ -18,7 +18,7 @@ class TravelDetailedBlockView: GradientView {
     }(UILabel())
 
     private let textLabel: UILabel = {
-//        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
         $0.textColor = .wbMagenta
         $0.textAlignment = .right
 
@@ -43,32 +43,54 @@ class TravelDetailedBlockView: GradientView {
         }
     }
 
+    private let mainStack: UIStackView = {
+        $0.spacing = Constants.spacing
+        return $0
+    }(UIStackView())
+
+    private let canva: UIView = {
+        $0.layer.cornerRadius = Constants.cornerRadius - Constants.borderWidth
+        $0.clipsToBounds = true
+        $0.backgroundColor = .white
+
+        return $0
+    }(UIView())
+    
     init(title: String) {
         super.init(colors: [.wbMagenta, .wbPurplish],
                    startPoint: .init(x: 0, y: 0.5),
                    endPoint: .init(x: 1, y: 0.5))
 
+        self.titleLabel.text = title
+
+        initialize()
+    }
+
+    private func initialize() {
         layer.cornerRadius = Constants.cornerRadius
         clipsToBounds = true
 
-        let stack = UIStackView()
-        //        stack.alignment
-        stack.layer.cornerRadius = Constants.cornerRadius - Constants.borderWidth
-        stack.clipsToBounds = true
-        stack.backgroundColor = .white
+        addSubview(canva)
+        canva.addSubview(mainStack)
+        mainStack.addArrangedSubviews(self.titleLabel,
+                                      self.textLabel)
 
-        addSubview(stack)
+        setupLayouts()
+    }
 
-        stack.snp.makeConstraints { make in
+    private func setupLayouts() {
+        canva.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().offset(Constants.borderWidth)
+            make.trailing.bottom.equalToSuperview().offset(-Constants.borderWidth)
+        }
+
+        mainStack.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(Constants.spacing)
             make.trailing.bottom.equalToSuperview().offset(-Constants.spacing)
         }
 
 
-        self.titleLabel.text = title
 
-        stack.addArrangedSubviews(self.titleLabel,
-                                  self.textLabel)
 
     }
 

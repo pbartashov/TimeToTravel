@@ -33,6 +33,11 @@ final class TravelsViewController: UITableViewController {
 
         fetchTravels()
 
+        addObservers()
+    }
+
+    deinit {
+        removeObservers()
     }
 
     private func initialize() {
@@ -187,6 +192,42 @@ extension TravelsViewController {
         let travelDetailedViewController = TravelDetailedViewController(travel: travel)
         navigationController?.pushViewController(travelDetailedViewController,
                                                  animated: true)
+    }
+}
+
+// MARK: - NotificationCenter observers
+extension TravelsViewController {
+    private func addObservers() {
+        let notificationCenter = NotificationCenter.default
+
+        notificationCenter.addObserver(self,
+                                       selector:#selector(onUpdateTravel(_:)),
+                                       name: .travelUpdated,
+                                       object: TravelDetailedViewController.self)
+    }
+
+    private func removeObservers() {
+        let notificationCenter = NotificationCenter.default
+
+        notificationCenter.removeObserver(self,
+                                          name: .travelUpdated,
+                                          object: TravelDetailedViewController.self)
+    }
+
+    @objc
+    private func onUpdateTravel(_ notification: Notification) {
+
+        if let userInfo = notification.userInfo,
+           let travel = userInfo["travel"] as? Travel,
+           let index = travelController.travels.firstIndex(where: { $0.searchToken == travel.searchToken }) {
+
+            let indexPath =  IndexPath(item: index, section: 0)
+
+            DispatchQueue.main.async {
+                let cell = self.tableView.cellForRow(at: indexPath) as! TravelsViewCell
+                cell.setup(with: travel)
+            }
+        }
     }
 }
 
