@@ -11,8 +11,9 @@ import SnapKit
 class TravelsViewCell: UITableViewCell {
 
     private let startCity: UILabel = {
-//        $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .wbPurplish
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.textColor = .white
+        $0.textAlignment = .center
 
         return $0
     }(UILabel())
@@ -26,14 +27,14 @@ class TravelsViewCell: UITableViewCell {
 
     private let startDate: UILabel = {
 //        $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .wbMagenta
+        $0.textColor = .wbPurplish
 
         return $0
     }(UILabel())
 
     private let endDate: UILabel = {
 //        $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .wbMagenta
+        $0.textColor = .wbPurplish
 
         return $0
     }(UILabel())
@@ -45,17 +46,23 @@ class TravelsViewCell: UITableViewCell {
         return $0
     }(UILabel())
 
-    private let isFavorite = UIImageView()
+    private let isFavorite: UIImageView = {
+        $0.setContentHuggingPriority(.init(rawValue: 999), for: .horizontal)
+        $0.tintColor = .wbDarkViolet
+        return $0
+    }(UIImageView())
 
     private let backGround: GradientView = {
-        $0.layer.cornerRadius = 10
+        $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
 
         return $0
     }(GradientView(colors: [.wbMagenta, .wbDarkViolet], startPoint: .init(x: 0, y: 0.5), endPoint: .init(x: 1, y: 0.5)))
 
     private let canva: UIView = {
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 3
+        $0.clipsToBounds = true
+        $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         $0.backgroundColor = .white
 
         return $0
@@ -126,7 +133,6 @@ class TravelsViewCell: UITableViewCell {
 
     private func setupLayouts() {
 
-        let cityStack = UIStackView()
 
         backGround.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(8)
@@ -134,71 +140,134 @@ class TravelsViewCell: UITableViewCell {
 
         }
 
-        canva.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(5)
-            make.trailing.bottom.equalToSuperview().offset(-5)
-        }
+
+
+//        canva.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(0)
+//            make.leading.equalToSuperview().offset(5)
+//            make.trailing.bottom.equalToSuperview().offset(-5)
+//        }
 
 
 
-        cityStack.alignment = .center
-        cityStack.axis = .vertical
-        cityStack.backgroundColor = .white
+        let topStack = UIStackView()
+//        topStack.axis = .horizontal
+        topStack.alignment = .center
+
+//let topGradient = GradientView(colors: [.wbMagenta, .wbDarkViolet], startPoint: .init(x: 0, y: 0.5), endPoint: .init(x: 1, y: 0.5))
+//
+//        topStack.addSubview(topGradient)
+//        topGradient.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
+//
+
+//        let cityStack = UIStackView()
+//       //        cityStack.axis = .horizontal
+//        cityStack.alignment = .center
+//        cityStack.distribution = .fillProportionally
+//
+//        cityStack.backgroundColor = .white
 
         let plane = UIImageView(image: UIImage(systemName: "airplane"))
 
-        cityStack.addArrangedSubviews(startCity,
-                                      plane,
-                                      endCity)
+//        cityStack.addArrangedSubviews(startCity,
+//                                      plane,
+//                                      endCity)
 
-        let startStack = UIStackView()
-        startStack.alignment = .center
-        startStack.axis = .vertical
-        startStack.backgroundColor = .white
+        let chevron = UIImageView(image: UIImage(systemName: "chevron.right"))
+        chevron.tintColor = .white
+        chevron.setContentHuggingPriority(.init(rawValue: 999), for: .horizontal)
+
+        topStack.addArrangedSubviews(startCity,
+                                     chevron)
+
+        let bottomStack = UIStackView()
+        //        topStack.axis = .horizontal
+        bottomStack.alignment = .center
+        bottomStack.distribution = .fillProportionally
+        bottomStack.spacing = 4
+        bottomStack.backgroundColor = .white
+//        bottomStack.layer.cornerRadius = 3
+//        bottomStack.clipsToBounds = true
+//        bottomStack.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+
+
+
+        let labelStack = UIStackView()
+        labelStack.axis = .vertical
+        labelStack.alignment = .leading
+//        labelStack.backgroundColor = .white
 
         let startLabel = UILabel()
+        startLabel.textColor = .wbMagenta
         startLabel.text = "Туда"
 
-        startStack.addArrangedSubviews(startLabel,
-                                      startDate)
-
-        let endStack = UIStackView()
-        endStack.alignment = .center
-        endStack.axis = .vertical
-        endStack.backgroundColor = .white
-
         let endLabel = UILabel()
+        endLabel.textColor = .wbMagenta
         endLabel.text = "Обратно"
 
-        endStack.addArrangedSubviews(endLabel,
+        labelStack.addArrangedSubviews(startLabel,
+                                       endLabel)
+
+        let dateStack = UIStackView()
+        dateStack.axis = .vertical
+        dateStack.alignment = .leading
+//        dateStack.backgroundColor = .white
+
+
+
+        dateStack.addArrangedSubviews(startDate,
                                      endDate)
 
+        bottomStack.addArrangedSubviews(labelStack,
+                                        dateStack,
+                                        price,
+                                        isFavorite)
+
+//        let mainStack = UIStackView()
+//        mainStack.axis = .vertical
+////        mainStack.alignment = .fill
+////        mainStack.backgroundColor = .white
+//
+//        mainStack.addArrangedSubviews(topStack,
+//                                      bottomStack)
+
+//        canva.addSubview(mainStack)
+//
+//        mainStack.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(0)
+//            make.leading.equalToSuperview().offset(8)
+//            make.trailing.equalToSuperview().offset(-8)
+//            make.bottom.equalToSuperview().offset(-0)
+//
+//        }
+
+        backGround.addSubviews(topStack)
+        canva.addSubviews(bottomStack)
 
 
-        let mainStack = UIStackView()
-        mainStack.alignment = .center
-        mainStack.axis = .horizontal
-        mainStack.backgroundColor = .white
-
-        mainStack.addArrangedSubviews(cityStack,
-                                      startStack,
-                                      endStack,
-                                      price,
-                                      isFavorite)
-
-        canva.addSubview(mainStack)
-
-        mainStack.snp.makeConstraints { make in
+        topStack.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(0)
-            make.leading.equalToSuperview().offset(0)
-            make.trailing.equalToSuperview().offset(-0)
-            make.bottom.equalToSuperview().offset(-0)
-
+            make.leading.equalToSuperview().offset(5)
+            make.trailing.equalToSuperview().offset(-5)
         }
 
-        cityStack.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.35)
+        canva.snp.makeConstraints { make in
+            make.top.equalTo(topStack.snp.bottom).offset(0)
+            make.leading.equalToSuperview().offset(5)
+            make.trailing.bottom.equalToSuperview().offset(-5)
         }
+
+        bottomStack.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.leading.equalToSuperview().offset(5)
+            make.trailing.bottom.equalToSuperview().offset(-5)
+        }
+
+//        cityStack.snp.makeConstraints { make in
+//            make.width.equalToSuperview().multipliedBy(0.35)
+//        }
 
 
     }
@@ -227,15 +296,17 @@ class TravelsViewCell: UITableViewCell {
 //    }
 
     func setup(with travel: Travel) {
-        startCity.text = travel.startCity
+//        startCity.text = travel.startCity
+        startCity.text = travel.startCity + " \u{2708} " + travel.endCity
 
         endCity.text = travel.endCity
 
-        startDate.text = "\(travel.startDate)"
-        endDate.text = "\(travel.endDate)"
-        price.text = "\(travel.price)"
+        startDate.text = "\(format: travel.startDate)"
+        endDate.text = "\(format: travel.endDate)"
+        price.text = "\(format: travel.price) руб"
+//        price.text = String(format: "%.2f", travel.price)
 
-        isFavorite.image = UIImage(systemName: travel.isFavorite ? "heart" : "heart.fill")
+        isFavorite.image = UIImage(systemName: travel.isFavorite ? "heart.fill" : "heart")
 
 //        contentView.layer.borderColor = UIColor.gradientColor(bounds: contentView.bounds, colors: [.systemBlue, .systemRed]).cgColor
 //        contentView.layer.borderWidth = 3

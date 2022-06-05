@@ -15,4 +15,16 @@ extension String.StringInterpolation {
         let dateString = formatter.string(from: value)
         appendLiteral(dateString)
     }
+
+    mutating func appendInterpolation(format value: Double) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.decimalSeparator = "."
+        formatter.groupingSeparator = " "
+
+        if let result = formatter.string(from: value as NSNumber) {
+            appendLiteral(result)
+        }
+    }
 }

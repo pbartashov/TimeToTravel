@@ -12,6 +12,8 @@ extension UIColor {
     static let wbPurplish = UIColor(red: 153 / 255, green: 0 / 255, blue: 153 / 255, alpha: 1)
     static let wbDarkViolet = UIColor(red: 72 / 255, green: 17 / 255, blue: 115 / 255, alpha: 1)
 
+
+    static let wbGray4 = UIColor(red: 204 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1)
 //    static func gradientColor(bounds: CGRect, colors: [UIColor]) -> UIColor {
 //        let gradientLayer = CAGradientLayer()
 //        gradientLayer.frame = bounds
