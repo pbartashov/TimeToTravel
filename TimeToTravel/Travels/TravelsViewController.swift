@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import SnapKit
 
 final class TravelsViewController: UITableViewController {
 
@@ -16,8 +17,8 @@ final class TravelsViewController: UITableViewController {
 
     /// Spinner shown during load the TableView
     private let spinner: UIActivityIndicatorView = {
-        $0.style = .medium
-        $0.color = .wbPurplish
+        $0.style = .large
+        $0.color = .wbMagenta
 
         return $0
     }(UIActivityIndicatorView())
@@ -25,30 +26,97 @@ final class TravelsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initialize()
+        setupNavigationBar()
+
+        spinner.startAnimating()
+
+        fetchTravels()
+
+    }
+
+    private func initialize() {
+
         tableView.backgroundView = spinner
         tableView.register(TravelsViewCell.self,
                            forCellReuseIdentifier: TravelsViewCell.identifier)
 
-//        tableView.dataSource = self
-//        tableView.delegate = self
-//        tableView.contentInset = .init(top: 8, left: 8, bottom: 8, right: -28)
+        //        tableView.dataSource = self
+        //        tableView.delegate = self
+        //        tableView.contentInset = .init(top: 8, left: 8, bottom: 8, right: -28)
         tableView.separatorStyle = .none
 
-        tableView.backgroundColor = .green
 
-        spinner.startAnimating()
+//        tableView.backgroundView = GradientView(colors: [.wbMagenta, .wbPurplish],
+//                                                startPoint: .init(x: 0, y: 0.5),
+//                                                endPoint: .init(x: 1, y: 0.5))
 
-        Task.init {
-            do {
-                try await travelController.fetchTravels()
-                tableView.reloadData()
-            } catch {
-                displayError(error, title: "Не удалось получить список авиаперелетов")
-            }
+//        tableView.backgroundColor = .gradientColor(bounds: tableView.bounds, colors: [.wbMagenta, .wbPurplish])
+//        let background = GradientView(colors: [.wbMagenta, .wbPurplish],
+//                                      startPoint: .init(x: 0, y: 0.5),
+//                                      endPoint: .init(x: 1, y: 0.5))
+//        view.addSubview(background)
+//        view.bringSubviewToFront(<#T##view: UIView##UIView#>)(background)
+//
+//        tableView.backgroundColor = .green
+//        view.addSubview(spinner)
+//        setupLayouts()
+//        background.snp.makeConstraints { make in
+//            make.top.leading.trailing.bottom.equalToSuperview()
+//        }
 
-            spinner.stopAnimating()
-        }
+    }
 
+//    private func setupLayouts() {
+//
+//        spinner.snp.makeConstraints { make in
+//            make.centerX.centerY.equalTo(view.safeAreaLayoutGuide)
+//
+//        }
+//    }
+
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        tableView.backgroundColor = .gradientColor(bounds: .init(origin: .zero, size: size), colors: [.wbMagenta, .wbPurplish])
+//    }
+
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+
+        title = "Пора в путешествие!"
+
+        let scrollEdgeAppearance = UINavigationBarAppearance()
+        scrollEdgeAppearance.configureWithTransparentBackground()
+        scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        scrollEdgeAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//        navBarAppearance.backgroundColor = <insert your color here>
+//        navigationController?.navigationBar.standardAppearance = navBarAppearance
+//        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+//        navigationController?.navigationBar.compactAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
+
+        let standardAppearance = navigationController?.navigationBar.standardAppearance
+        standardAppearance?.titleTextAttributes = [.foregroundColor: UIColor.wbMagenta]
+        standardAppearance?.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+
+
+//        navigationController?.navigationBar.scrollEdgeAppearance?.largeTitleTextAttributes = [.foregroundColor: UIColor.wbMagenta]
+//        navigationController?.navigationBar.scrollEdgeAppearance?.titleTextAttributes = [.foregroundColor: UIColor.wbMagenta]
+
+        navigationController?.navigationBar.tintColor = .wbMagenta
+//        navigationController.colo
+//        navigationController?.navigationBar.backgroundColor = .myHabitsColor(.mainBackground)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+
+        super.viewWillTransition(to: size, with: coordinator)
+
+        // Для корректной установке NavigationBarAppearance при повороте устройства
+        coordinator.animate(alongsideTransition: { _ in
+            self.navigationController?.navigationBar.sizeToFit()
+        }, completion: nil)
     }
 
     private func displayError(_ error: Error, title: String) {
@@ -58,10 +126,34 @@ final class TravelsViewController: UITableViewController {
                                       message: error.localizedDescription,
                                       preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Закрыть",
-                                      style: .default, handler: nil))
+
+        alert.addAction(UIAlertAction(title: "Повторить",
+                                      style: .default,
+                                      handler: { _ in self.fetchTravels() } ))
+
+//        alert.addAction(UIAlertAction(title: "Закрыть",
+//                                      style: .default, handler: nil))
 
         self.present(alert, animated: true, completion: nil)
+
+
+        // retry
+    }
+
+    private func fetchTravels() {
+        Task.init {
+            do {
+                try await travelController.fetchTravels()
+                tableView.reloadData()
+                spinner.stopAnimating()
+                tableView.backgroundView = GradientView(colors: [.wbMagenta, .wbPurplish],
+                                                        startPoint: .init(x: 0, y: 0.5),
+                                                        endPoint: .init(x: 1, y: 0.5))
+            } catch {
+                displayError(error, title: "Не удалось получить список авиаперелетов")
+            }
+
+        }
     }
 }
 
@@ -82,29 +174,19 @@ extension TravelsViewController {
 
         return cell
     }
-
-
 }
 
-//// MARK: - UITableViewDelegate methods
-//extension HabitViewController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if habit == nil {
-//            return 0
-//        } else {
-//            let contentHeight = modelView.cells.reduce(0) { partialResult, cell in
-//                partialResult + cell.bounds.height
-//            }
-//
-//            let height = view.safeAreaLayoutGuide.layoutFrame.height - contentHeight - tableView.contentInset.top
-//
-//            return max(height, deleteButton.bounds.height + Constants.bottomPadding)
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        habit == nil ? nil : footerView
-//    }
-//}
+// MARK: - UITableViewDelegate methods
+//extension TravelsViewController: UITableViewDelegate {
+extension TravelsViewController {
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let travel = travelController.travels[indexPath.row]
+        let travelDetailedViewController = TravelDetailedViewController(travel: travel)
+        navigationController?.pushViewController(travelDetailedViewController,
+                                                 animated: true)
+    }
+}
 

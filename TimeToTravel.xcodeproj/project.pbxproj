@@ -17,12 +17,16 @@
 		6E764CC22848DD7100E69CC7 /* TravelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CC12848DD7100E69CC7 /* TravelController.swift */; };
 		6E764CC6284AC9E200E69CC7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CC5284AC9E200E69CC7 /* UIColor+Extension.swift */; };
 		6E764CC8284AD9B700E69CC7 /* TravelsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CC7284AD9B700E69CC7 /* TravelsViewCell.swift */; };
-		6E764CCA284ADADA00E69CC7 /* ?TravelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CC9284ADADA00E69CC7 /* ?TravelsView.swift */; };
 		6E764CCC284ADDEF00E69CC7 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CCB284ADDEF00E69CC7 /* NetworkController.swift */; };
 		6E764CCE284B111D00E69CC7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */; };
 		6E764CD0284B193100E69CC7 /* StringInterpolation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */; };
 		6E764CD2284B39E800E69CC7 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD1284B39E800E69CC7 /* GradientView.swift */; };
 		6E764CD4284B431A00E69CC7 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */; };
+		6E764CD7284CB0AA00E69CC7 /* TravelDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD6284CB0AA00E69CC7 /* TravelDetailedViewController.swift */; };
+		6E764CD9284CB0C300E69CC7 /* TravelDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E764CD8284CB0C300E69CC7 /* TravelDetailedView.swift */; };
+		6EB900F7284CE467000594AB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900F6284CE467000594AB /* Helper.swift */; };
+		6EB900F9284CE606000594AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900F8284CE606000594AB /* Constants.swift */; };
+		6EB900FB284CEEB3000594AB /* TravelDetailedBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB900FA284CEEB3000594AB /* TravelDetailedBlockView.swift */; };
 		A1E73DABAF4AFD80B34AEF54 /* Pods_TimeToTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,12 +43,16 @@
 		6E764CC12848DD7100E69CC7 /* TravelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelController.swift; sourceTree = "<group>"; };
 		6E764CC5284AC9E200E69CC7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		6E764CC7284AD9B700E69CC7 /* TravelsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelsViewCell.swift; sourceTree = "<group>"; };
-		6E764CC9284ADADA00E69CC7 /* ?TravelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "?TravelsView.swift"; sourceTree = "<group>"; };
 		6E764CCB284ADDEF00E69CC7 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringInterpolation+Extension.swift"; sourceTree = "<group>"; };
 		6E764CD1284B39E800E69CC7 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		6E764CD6284CB0AA00E69CC7 /* TravelDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailedViewController.swift; sourceTree = "<group>"; };
+		6E764CD8284CB0C300E69CC7 /* TravelDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailedView.swift; sourceTree = "<group>"; };
+		6EB900F6284CE467000594AB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		6EB900F8284CE606000594AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6EB900FA284CEEB3000594AB /* TravelDetailedBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDetailedBlockView.swift; sourceTree = "<group>"; };
 		B7B8F469E926AD0D146B30B7 /* Pods_TimeToTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF230A959240A3D1ACCBCFA6 /* Pods-TimeToTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToTravel.release.xcconfig"; path = "Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel.release.xcconfig"; sourceTree = "<group>"; };
 		EEB3A0EDB452C1328396BF92 /* Pods-TimeToTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToTravel.debug.xcconfig"; path = "Target Support Files/Pods-TimeToTravel/Pods-TimeToTravel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +112,7 @@
 				6E764CBB2848DB6E00E69CC7 /* Model */,
 				6E764CC02848DD4E00E69CC7 /* Controller */,
 				6E764CC32848FF5500E69CC7 /* Travels */,
+				6E764CD5284CB08000E69CC7 /* TravelDetailed */,
 				6E764CA72848DB4B00E69CC7 /* AppDelegate.swift */,
 				6E764CA92848DB4B00E69CC7 /* SceneDelegate.swift */,
 				6E764CB02848DB4C00E69CC7 /* Assets.xcassets */,
@@ -135,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				6E764CAB2848DB4B00E69CC7 /* TravelsViewController.swift */,
-				6E764CC9284ADADA00E69CC7 /* ?TravelsView.swift */,
 				6E764CC7284AD9B700E69CC7 /* TravelsViewCell.swift */,
 			);
 			path = Travels;
@@ -147,10 +155,22 @@
 				6E764CC5284AC9E200E69CC7 /* UIColor+Extension.swift */,
 				6E764CCD284B111D00E69CC7 /* UIView+Extension.swift */,
 				6E764CCF284B193100E69CC7 /* StringInterpolation+Extension.swift */,
-				6E764CD1284B39E800E69CC7 /* GradientView.swift */,
 				6E764CD3284B431A00E69CC7 /* UIStackView+Extension.swift */,
+				6E764CD1284B39E800E69CC7 /* GradientView.swift */,
+				6EB900F6284CE467000594AB /* Helper.swift */,
+				6EB900F8284CE606000594AB /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6E764CD5284CB08000E69CC7 /* TravelDetailed */ = {
+			isa = PBXGroup;
+			children = (
+				6E764CD6284CB0AA00E69CC7 /* TravelDetailedViewController.swift */,
+				6E764CD8284CB0C300E69CC7 /* TravelDetailedView.swift */,
+				6EB900FA284CEEB3000594AB /* TravelDetailedBlockView.swift */,
+			);
+			path = TravelDetailed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,14 +287,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E764CD7284CB0AA00E69CC7 /* TravelDetailedViewController.swift in Sources */,
+				6EB900F9284CE606000594AB /* Constants.swift in Sources */,
 				6E764CCE284B111D00E69CC7 /* UIView+Extension.swift in Sources */,
 				6E764CD4284B431A00E69CC7 /* UIStackView+Extension.swift in Sources */,
 				6E764CCC284ADDEF00E69CC7 /* NetworkController.swift in Sources */,
 				6E764CC6284AC9E200E69CC7 /* UIColor+Extension.swift in Sources */,
+				6EB900FB284CEEB3000594AB /* TravelDetailedBlockView.swift in Sources */,
+				6EB900F7284CE467000594AB /* Helper.swift in Sources */,
 				6E764CAC2848DB4B00E69CC7 /* TravelsViewController.swift in Sources */,
 				6E764CC22848DD7100E69CC7 /* TravelController.swift in Sources */,
 				6E764CBD2848DB7F00E69CC7 /* Travel.swift in Sources */,
-				6E764CCA284ADADA00E69CC7 /* ?TravelsView.swift in Sources */,
+				6E764CD9284CB0C300E69CC7 /* TravelDetailedView.swift in Sources */,
 				6E764CA82848DB4B00E69CC7 /* AppDelegate.swift in Sources */,
 				6E764CC8284AD9B700E69CC7 /* TravelsViewCell.swift in Sources */,
 				6E764CD0284B193100E69CC7 /* StringInterpolation+Extension.swift in Sources */,

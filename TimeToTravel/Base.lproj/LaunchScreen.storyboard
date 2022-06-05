@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +14,31 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wbIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yLm-jA-LGY">
+                                <rect key="frame" x="182" y="788" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Jfp-3t-mQd"/>
+                                    <constraint firstAttribute="height" constant="50" id="qHn-Vt-MV9"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane.departure" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SLf-69-9bR">
+                                <rect key="frame" x="157" y="399.5" width="100" height="97"/>
+                                <color key="tintColor" cyan="0.27000000000000002" magenta="0.97999999999999998" yellow="0.029999999999999999" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4xY-BC-yvU"/>
+                                    <constraint firstAttribute="width" constant="100" id="Zga-4M-aMn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yLm-jA-LGY" firstAttribute="centerY" secondItem="SLf-69-9bR" secondAttribute="centerY" multiplier="1.618" constant="88" id="4O8-s4-7x6"/>
+                            <constraint firstItem="yLm-jA-LGY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8i9-VC-eqU"/>
+                            <constraint firstItem="SLf-69-9bR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Net-so-Igk"/>
+                            <constraint firstItem="SLf-69-9bR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XUP-bB-WbR"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,8 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="airplane.departure" catalog="system" width="128" height="83"/>
+        <image name="wbIcon" width="540.5" height="540.5"/>
     </resources>
 </document>
